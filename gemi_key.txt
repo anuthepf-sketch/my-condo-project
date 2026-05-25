@@ -1,14 +1,14 @@
-AIzaSyDpIlQonfRE9MVwFL30KUbfgnvaT_5yYow
+
 
 Gemini API Key
 
-projects/93252913692
+projects/93
 
-93252913692
+9
 
 curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent" \
   -H 'Content-Type: application/json' \
-  -H 'X-goog-api-key: AIzaSyDpIlQonfRE9MVwFL30KUbfgnvaT_5yYow' \
+  -H 'X-goog-api-' \
   -X POST \
   -d '{
     "contents": [
