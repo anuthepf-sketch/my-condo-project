@@ -10,6 +10,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      # 1. ต้องลง Node.js ก่อนมึง!
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      # 2. ลง Dependencies ของ Frontend ก่อนรันเทส
+      - name: Install Dependencies
+        run: |
+          cd frontend
+          npm install
+
       - name: Build Backend Image
         run: docker build -t condo-backend ./backend
 
@@ -18,3 +30,8 @@ jobs:
         
       - name: Test Docker Compose
         run: docker compose -f docker-compose.yml config
+
+      - name: Run Playwright Tests
+        run: |
+          cd frontend
+          npm run test:all
