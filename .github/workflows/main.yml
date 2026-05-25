@@ -1,0 +1,20 @@
+name: Condo CI Pipeline
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build Backend Image
+        run: docker build -t condo-backend ./backend
+
+      - name: Build Frontend Image
+        run: docker build -t condo-frontend ./frontend
+        
+      - name: Test Docker Compose
+        run: docker compose -f docker-compose.yml config
