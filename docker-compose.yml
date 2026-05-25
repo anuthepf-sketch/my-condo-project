@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  # --- 1. ระบบหลังบ้าน (Backend Service) ---
+  condo-backend:
+    build: ./backend
+    container_name: condo-backend-1
+    ports:
+      - "5000:5000"  # เปิดท่อพอร์ต 5000 ให้เครื่อง Windows และ Postman ยิงเข้าได้
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/condo_db  # ✅ จุดที่ 1: แก้จาก mongo-1 เป็น mongo ให้ตรงกัน
+    depends_on:
+      - mongo
+
+  # --- 2. ระบบทดสอบหลังบ้านออโต้ (Backend Automation Test) ---
+  backend-test:
+    build:
+      context: ./backend
+    container_name: backend-test-1
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=test
+      - MONGO_URI=mongodb://mongo:27017/condo
+    command: npm run test
+    depends_on:
+      - mongo
+
+  # --- 3. ระบบหน้าบ้าน (Frontend Service) ---
+  condo-frontend:
+    build:
+      context: ./frontend
+    container_name: condo-frontend-1
+    ports:
+      - "8080:80"
+    depends_on:
+      - condo-backend
+
+  # --- 4. ระบบฐานข้อมูล (Database Service) ---
+  mongo:  # ชื่อบริการหลักคือ mongo
+    image: mongo:latest
+    container_name: mongo-1  # ✅ จุดที่ 2: ตั้งชื่อตู้ข้างใน (ปล่อยเป็น mongo-1 หรือเปลี่ยนเป็น mongo ก็ได้ ไม่มีผลกับข้ออื่น)
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  backend-perf-test:
+    image: grafana/k6
+    container_name: backend-perf-test-1
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: run performance.test.js
+    depends_on:
+      - condo-backend
+
+volumes:
+  mongo-data:

@@ -1,0 +1,158 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  text-align: center;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.condo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.condo-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: left;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
+  position: relative;
+}
+
+.condo-card:hover {
+  transform: translateY(-5px);
+}
+
+.room-num {
+  color: #007bff;
+  margin: 0.5rem 0;
+}
+
+.desc {
+  color: #555;
+  font-size: 0.95rem;
+  min-height: 50px;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  color: #777;
+  background: #f8f9fa;
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+
+.price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #28a745;
+  margin-top: 1rem;
+}
+
+.status-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #e2f0d9;
+  color: #385723;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.form-section {
+  background: #fdfdfd;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 700px;
+  margin: 0 auto 3rem auto;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.form-section h2 {
+  margin-top: 0;
+  color: #333;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #444;
+}
+
+.form-group input, 
+.form-group textarea, 
+.form-group select {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.submit-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+.divider {
+  border: 0;
+  height: 1px;
+  background: #e0e0e0;
+  margin: 3rem 0;
+}
