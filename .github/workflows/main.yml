@@ -21,6 +21,7 @@ jobs:
         run: |
           cd frontend
           npm install
+          npx playwright install --with-deps chromium # บรรทัดนี้สำคัญมาก!
 
       - name: Build Backend Image
         run: docker build -t condo-backend ./backend
