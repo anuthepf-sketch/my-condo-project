@@ -19,7 +19,7 @@ test.describe('Condo UI', () => {
     await page.setViewportSize({ width: 1920, height: 1080 });
 
     // 🌐 สเต็ปที่ 2: สั่งยิงตรงไปที่พอร์ต Nginx หน้าบ้าน
-    await page.goto('http://localhost:8080/');
+    await page.goto('http://localhost:5173/');
 
     // 2. ตรวจสอบเช็คความพร้อมหน้าเว็บ
     await expect(page.locator('h1')).toContainText('Condo Management System');
